@@ -18,4 +18,13 @@ class AdminController extends Controller
         // dd(123);
         return view('admin.dashboard');
     }
+
+    public function getReceiver()
+    {
+        return view('admin.receiver');
+    }
+    public function getProvider()
+    {
+        return view('admin.provider');
+    }
 }

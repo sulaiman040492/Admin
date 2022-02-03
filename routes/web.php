@@ -32,6 +32,8 @@ Route::prefix('/admin/')->name('admin.')->group(function () {
     Route::post('password/reset', [App\Http\Controllers\Admin\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
      */
     Route::get('dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
+    Route::get('receiver', [App\Http\Controllers\AdminController::class, 'getReceiver'])->name('receiver');
+    Route::get('provider', [App\Http\Controllers\AdminController::class, 'getProvider'])->name('provider');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

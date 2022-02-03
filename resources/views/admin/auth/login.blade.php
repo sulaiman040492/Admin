@@ -54,7 +54,7 @@
 								<div class="fv-row mb-10">
 									<label class="form-label fs-6 fw-bolder text-dark">Email</label>
 
-									<input class="form-control form-control-lg form-control-solid @error('email') is-invalid @enderror" type="text" name="email" value="{{ old('email') }}" autocomplete="off" />
+									<input class="form-control form-control-lg form-control-solid @error('email') border-danger is-invalid @enderror" type="text" name="email" value="{{ old('email') }}" autocomplete="off" />
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -70,7 +70,7 @@
 										<a href="password-reset.php" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
 									</div>
 
-									<input class="form-control form-control-lg form-control-solid @error('password') is-invalid @enderror" type="password" value="{{ old('password') }}" name="password" autocomplete="off" />
+									<input class="form-control form-control-lg form-control-solid @error('password') border-danger is-invalid @enderror" type="password" value="{{ old('password') }}" name="password" autocomplete="off" />
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
