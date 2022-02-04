@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Client\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\AdminModel as Admin;
+use App\Models\ClientModel as Client;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -46,7 +46,6 @@ class LoginController extends Controller
                 ->withInput($request->all())
                 ->withErrors($validator);
         }
-
         if (Auth::guard('client')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
             return redirect()
                 ->route('client.dashboard')

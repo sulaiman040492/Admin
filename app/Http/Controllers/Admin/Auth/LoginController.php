@@ -46,7 +46,6 @@ class LoginController extends Controller
                 ->withInput($request->all())
                 ->withErrors($validator);
         }
-
         if (Auth::guard('admin')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
             return redirect()
                 ->route('admin.dashboard')

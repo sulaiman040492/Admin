@@ -17,8 +17,16 @@ class ClientModel extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $table = 'clients';
+
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'address',
+        'service_id',
+        'phone_no',
+        'date_of_birth',
         'email',
         'password',
     ];
