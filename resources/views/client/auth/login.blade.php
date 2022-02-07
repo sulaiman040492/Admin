@@ -67,7 +67,7 @@
 									<div class="d-flex flex-stack mb-2">
 										<label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
 
-										<a href="password-reset.php" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
+										<a href="" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
 									</div>
 
 									<input class="form-control form-control-lg form-control-solid @error('password') is-invalid @enderror" type="password" value="{{ old('password') }}" name="password" autocomplete="off" />

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Client\Auth;
 
 use App\Http\Controllers\Controller;
 use Auth;
@@ -28,7 +28,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'admin/dashboard';
+    protected $redirectTo = 'client/dashboard';
 
     /**
      * Create a new controller instance.
@@ -38,23 +38,23 @@ class ResetPasswordController extends Controller
 
     public function showResetForm(Request $request, $token = null)
     {
-        return view('admin.auth.reset')->with(
+        return view('client.auth.reset')->with(
             ['token' => $token, 'email' => $request->email, 'form_msg' => 'Please Enter Your New Password.']
         );
     }
 
     public function __construct()
     {
-        $this->redirectTo = \Request::segment(1) . '/admin/dashboard';
-        $this->middleware('guest:admin');
+        $this->redirectTo = \Request::segment(1) . '/client/dashboard';
+        $this->middleware('guest:client');
     }
 
     protected function guard()
     {
-        return Auth::guard('admin');
+        return Auth::guard('client');
     }
     public function broker()
     {
-        return Password::broker('admins');
+        return Password::broker('clients');
     }
 }
