@@ -41,6 +41,10 @@ Route::prefix('/client/')->name('client.')->group(function () {
     Route::get('login', [App\Http\Controllers\Client\Auth\LoginController::class, 'showLoginForm'])->name('login');
     Route::post('login', [App\Http\Controllers\Client\Auth\LoginController::class, 'attemptLogin'])->name('login.post');
     Route::post('logout', [App\Http\Controllers\Client\Auth\LoginController::class, 'logout'])->name('logout');
+
+    Route::get('register', [App\Http\Controllers\Client\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [App\Http\Controllers\Client\Auth\RegisterController::class, 'register'])->name('register.post');
+
     // Password Reset Routes...
     /* Route::get('password/reset', [App\Http\Controllers\Client\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
     Route::post('password/email', [App\Http\Controllers\Client\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');

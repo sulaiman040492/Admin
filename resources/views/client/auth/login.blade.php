@@ -40,13 +40,17 @@
 				<div class="d-flex flex-column flex-lg-row-fluid py-10">
 					<div class="d-flex flex-center flex-column flex-column-fluid">
 						<div class="w-lg-500px p-10 p-lg-15 mx-auto">
+<<<<<<< HEAD
                             <form method="POST" action="{{ route('client.login') }}">
+=======
+                            <form method="POST" action="{{ route('client.login') }}" class="form w-100" novalidate="novalidate" id="kt_sign_in_form">
+>>>>>>> 5653ac0cb10f9c05be839256a998bd07e9fab72d
                                 {{-- <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" action="{{ route('admin.login') }}"> --}}
                                     @csrf
 								<div class="text-center mb-10">
 									<h1 class="text-dark mb-3">Sign In to Island Care</h1>
 									<div class="text-gray-400 fw-bold fs-4">New Here?
-									<a href="sign-up.php" class="link-primary fw-bolder">Create an Account</a></div>
+									<a href="{{route('client.register')}}" class="link-primary fw-bolder">Create an Account</a></div>
 								</div>
 
                                 
@@ -84,7 +88,7 @@
                                     </div>
                                 @endif
 								<div class="text-center">
-									<button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
+									<button type="button" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
 										<span class="indicator-label">Continue</span>
 										<span class="indicator-progress">Please wait...
 										<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -100,7 +104,95 @@
 
 		<script src="{{asset('/plugins/global/plugins.bundle.js')}}"></script>
 		<script src="{{asset('/js/scripts.bundle.js')}}"></script>
-		<script src="{{asset('/js/custom/authentication/sign-in/general.js')}}"></script>
+		<!-- <script src="{{asset('/js/custom/authentication/sign-in/general.js')}}"></script> -->
 		<script src="{{asset('/js/custom/custom.js')}}"></script>
+
+
+		<script>
+			"use strict";
+var KTSigninGeneral = (function () {
+    var t, e, i;
+    return {
+        init: function () {
+            (t = document.querySelector("#kt_sign_in_form")),
+                (e = document.querySelector("#kt_sign_in_submit")),
+                (i = FormValidation.formValidation(t, {
+                    fields: {
+                        email: {
+                            validators: {
+                                notEmpty: {
+                                    message: "Email address is required",
+                                },
+                                emailAddress: {
+                                    message:
+                                        "The value is not a valid email address",
+                                },
+                            },
+                        },
+                        password: {
+                            validators: {
+                                notEmpty: {
+                                    message: "The password is required",
+                                },
+                            },
+                        },
+                    },
+                    plugins: {
+                        trigger: new FormValidation.plugins.Trigger(),
+                        bootstrap: new FormValidation.plugins.Bootstrap5({
+                            rowSelector: ".fv-row",
+                        }),
+                    },
+                })),
+                e.addEventListener("click", function (n) {
+                    n.preventDefault(),
+                        i.validate().then(function (i) {
+                            "Valid" == i
+                                ? (e.setAttribute("data-kt-indicator", "on"),
+                                  (e.disabled = !0),
+                                  setTimeout(function () {
+                                      e.removeAttribute("data-kt-indicator"),
+                                          (e.disabled = !1),
+										  
+										  $('#kt_sign_in_form').submit();
+
+                                        //   Swal.fire({
+                                        //       text: "You have successfully logged in!",
+                                        //       icon: "success",
+                                        //       buttonsStyling: !1,
+                                        //       confirmButtonText: "Ok, got it!",
+                                        //       customClass: {
+                                        //           confirmButton:
+                                        //               "btn btn-primary",
+                                        //       },
+                                        //   }).then(function (e) {
+                                        //       e.isConfirmed &&
+                                        //           ((t.querySelector(
+                                        //               '[name="email"]'
+                                        //           ).value = ""),
+                                        //           (t.querySelector(
+                                        //               '[name="password"]'
+                                        //           ).value = ""));
+                                        //   });
+                                  }, 2e3))
+                                : Swal.fire({
+                                      text: "Sorry, looks like there are some errors detected, please try again.",
+                                      icon: "error",
+                                      buttonsStyling: !1,
+                                      confirmButtonText: "Ok, got it!",
+                                      customClass: {
+                                          confirmButton: "btn btn-primary",
+                                      },
+                                  });
+                        });
+                });
+        },
+    };
+})();
+KTUtil.onDOMContentLoaded(function () {
+    KTSigninGeneral.init();
+});
+
+		</script>
 	</body>
 </html>
