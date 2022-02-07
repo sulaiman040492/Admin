@@ -47,6 +47,30 @@ $(".kt_data_delete_table_ok").on('click', function(){
     })
 });
 
+
+
+$(".kt_data_delete_table_ok_category").on('click', function(){
+    var id = $(this).attr('id');
+    swal.fire({
+          text: "Are you sure you would like to deleted this row?",
+          icon: "warning",
+          buttonsStyling: !1,
+          showDenyButton: !0,
+          confirmButtonText: "Yes",
+          denyButtonText: "No",
+          customClass: { confirmButton: "btn btn-light-primary", denyButton: "btn btn-danger" },
+    })
+    
+    .then((t) => {
+        t.isConfirmed
+            ? document.getElementById('delete-form-'+id).submit()
+            : t.isDenied && Swal.fire({ text: "Data not delete?", icon: "info", confirmButtonText: "Ok", buttonsStyling: !1, customClass: { confirmButton: "btn btn-light-primary" } });
+    })
+});
+
+
+
+
 $(".kt_subscription_cancel").on('click', function(){
     swal.fire({
           text: "Are you sure you would like to Cancel Subscription?",

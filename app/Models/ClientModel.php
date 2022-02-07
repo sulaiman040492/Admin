@@ -20,16 +20,16 @@ class ClientModel extends Authenticatable
 
     protected $table = 'clients';
 
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'address',
-        'service_id',
-        'phone_no',
-        'date_of_birth',
-        'email',
-        'password',
-    ];
+    // protected $fillable = [
+    //     'first_name',
+    //     'last_name',
+    //     'address',
+    //     'service_id',
+    //     'phone_no',
+    //     'date_of_birth',
+    //     'email',
+    //     'password',
+    // ];
 
     /**
      * The attributes that should be hidden for serialization.
