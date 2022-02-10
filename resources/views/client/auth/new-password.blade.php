@@ -30,19 +30,22 @@
 							<br /> the printing and typesetting industry.</p>
 						</div>
 
-						<div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url({{asset('/media/illustrations/sketchy-1/13.png"></div>
+						<div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url({{asset('/media/illustrations/sketchy-1/13.png')}}"></div>
 					</div>
 				</div>
 
 				<div class="d-flex flex-column flex-lg-row-fluid py-10">
 					<div class="d-flex flex-center flex-column flex-column-fluid">
 						<div class="w-lg-550px p-10 p-lg-15 mx-auto">
-							<form class="form w-100" novalidate="novalidate" id="kt_new_password_form">
-								<div class="text-center mb-10">
-									<h1 class="text-dark mb-3">Setup New Password</h1>
+							<form class="form w-100" method="post" action="{{ route('client.password.update') }}" id="kt_new_password_form1">
+								@csrf
+								<input type="hidden" name="token" value="{{ $token }}">
+								<input type="hidden" name="email" value="{{ $email ?? old('email') }}">
 
+								<div class="text-center mb-10">
+									<h1 class="text-dark mb-3">Setup New Password</h1>	
 									<div class="text-gray-400 fw-bold fs-4">Already have reset your password ?
-									<a href="sign-up.php" class="link-primary fw-bolder">Sign in here</a></div>
+									<a href="{{ route('client.register') }}" class="link-primary fw-bolder">Sign in here</a></div>
 								</div>
 
 								<div class="mb-10 fv-row" data-kt-password-meter="true">
@@ -70,19 +73,13 @@
 
 								<div class="fv-row mb-10">
 									<label class="form-label fw-bolder text-dark fs-6">Confirm Password</label>
-									<input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="confirm-password" autocomplete="off" />
+									<input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="password_confirmation" autocomplete="off" />
 								</div>
 
-								<div class="fv-row mb-10">
-									<div class="form-check form-check-custom form-check-solid form-check-inline">
-										<input class="form-check-input" type="checkbox" name="toc" value="1" />
-										<label class="form-check-label fw-bold text-gray-700 fs-6">I Agree &amp;
-										<a href="#" class="ms-1 link-primary">Terms and conditions</a>.</label>
-									</div>
-								</div>
+								
 
 								<div class="text-center">
-									<button type="button" id="kt_new_password_submit" class="btn btn-lg btn-primary fw-bolder">
+									<button type="submit" id="kt_new_password_submit" class="btn btn-lg btn-primary fw-bolder">
 										<span class="indicator-label">Submit</span>
 										<span class="indicator-progress">Please wait...
 										<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>

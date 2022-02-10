@@ -15,6 +15,22 @@
 		<link href="{{asset('/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="{{asset('/css/style.css')}}">
+		<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+		<script>
+			Pusher.logToConsole = true;
+			var pusher = new Pusher('cf736425b7e4224a6bb2', {
+			  cluster: 'ap2'
+			});
+			var channel = pusher.subscribe('island-channel');
+			channel.bind('island', function(data) {
+				// if(data.message !== undefined){
+				alert(JSON.stringify(data.message));
+
+				// }
+				// $('.list-group').prepend(data.message);
+				// $('.indicator').removeClass('hide');
+			});
+		</script>
 	</head>
 
 	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
