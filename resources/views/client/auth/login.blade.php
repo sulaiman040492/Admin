@@ -40,7 +40,11 @@
 				<div class="d-flex flex-column flex-lg-row-fluid py-10">
 					<div class="d-flex flex-center flex-column flex-column-fluid">
 						<div class="w-lg-500px p-10 p-lg-15 mx-auto">
+<<<<<<< HEAD
+                            <form method="POST" action="{{ route('client.login') }}">
+=======
                             <form method="POST" action="{{ route('client.login') }}" class="form w-100" novalidate="novalidate" id="kt_sign_in_form">
+>>>>>>> 5653ac0cb10f9c05be839256a998bd07e9fab72d
                                 {{-- <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" action="{{ route('admin.login') }}"> --}}
                                     @csrf
 								<div class="text-center mb-10">
