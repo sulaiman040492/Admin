@@ -46,7 +46,7 @@
 								</div>
 
 								<div class="menu-item">
-									<a class="menu-link active" href="index.php">
+									<a class="menu-link active" href="{{route('client.dashboard')}}">
 										<span class="menu-icon">
 											<span class="svg-icon svg-icon-2">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -110,8 +110,23 @@
 									</a>
 								</div>
 
+
 								<div class="menu-item">
-									<a class="menu-link" href="profile-edit.php">
+									<a class="menu-link" href="{{route('client.jobtype')}}">
+										<span class="menu-icon">
+											<span class="svg-icon svg-icon-2">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+													<path d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z" fill="black"></path>
+													<rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4" fill="black"></rect>
+												</svg>
+											</span>
+										</span>
+										<span class="menu-title">Post Job</span>
+									</a>
+								</div>
+
+								<div class="menu-item">
+									<a class="menu-link" href="{{route('client.profile')}}">
 										<span class="menu-icon">
 											<span class="svg-icon svg-icon-2">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -407,19 +422,31 @@
 
 										<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 											<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-												<img src="{{asset('/media/avatars/150-26.jpg')}}" alt="user" />
+												<img 
+												@if(Auth::guard('client')->user()->image != null)
+												src="{{asset('client/images/avatars/'.Auth::guard('client')->user()->image)}}"
+												@else
+												src="{{asset('client/images/avatars/default.png')}}"
+												@endif
+												alt="user" />
 											</div>
 
 											<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
 												<div class="menu-item px-3">
 													<div class="menu-content d-flex align-items-center px-3">
 														<div class="symbol symbol-50px me-5">
-															<img alt="Logo" src="{{asset('/media/avatars/150-26.jpg')}}" />
+															<img alt="Logo" 
+															@if(Auth::guard('client')->user()->image != null)
+															src="{{asset('client/images/avatars/'.Auth::guard('client')->user()->image)}}"
+															@else
+															src="{{asset('client/images/avatars/default.png')}}"
+															@endif
+															/>
 														</div>
 
 														<div class="d-flex flex-column">
-															<div class="fw-bolder d-flex align-items-center fs-5">Max Smith</div>
-															<a href="#" class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
+															<div class="fw-bolder d-flex align-items-center fs-5">{{ Auth::guard('client')->user()->first_name }} {{ Auth::guard('client')->user()->last_name }}</div>
+															<a href="#" class="fw-bold text-muted text-hover-primary fs-7">{{ Auth::guard('client')->user()->email }}</a>
 														</div>
 													</div>
 												</div>
@@ -427,19 +454,19 @@
 												<div class="separator my-2"></div>
 
 												<div class="menu-item px-5">
-													<a href="#" class="menu-link px-5">My Profile</a>
+													<a href="{{route('client.profile')}}" class="menu-link px-5">My Profile</a>
 												</div>
 
 												<div class="separator my-2"></div>
 
-												<div class="menu-item px-5 my-1">
+												<!-- <div class="menu-item px-5 my-1">
 													<a href="#" class="menu-link px-5">Account Settings</a>
-												</div>
+												</div> -->
 
-												<div class="separator my-2"></div>
+												<!-- <div class="separator my-2"></div> -->
 
 												<div class="menu-item px-5">
-													<a href="sign-in.php" class="menu-link px-5">Sign Out</a>
+													<a href="{{route('client.logout')}}" class="menu-link px-5">Sign Out</a>
 												</div>
 											</div>
 										</div>

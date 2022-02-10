@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel as Category;
 use Validator;
+use Str;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class CategoryController extends Controller
 {
@@ -40,8 +42,10 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            // 'description' => 'required',
-            // 'slug'       => 'required|unique:department'
+            'description'=>'required',
+            'number_of_jobs'=>'required|numeric',
+            'is_active'=>'required|numeric',
+            'icon' => 'required|mimes:png,jpg,jpeg',
         ]);
  
         if ($validator->fails()) {
@@ -51,8 +55,20 @@ class CategoryController extends Controller
         }
 
         $category = new Category();
+
+        $fileName = Str::random(10).'_'.$request->icon->getClientOriginalName();
+        $request->icon->move('admin/images/categories/',$fileName);
+
+        $slug = SlugService::createSlug(Category::class, 'slug', $request->name);
+        
+        $category->icon = $fileName;
         $category->name = $request->name;
+        $category->slug = $slug;
+        $category->description = $request->description;
+        $category->number_of_jobs = $request->number_of_jobs;
+        $category->is_active = $request->is_active;
         $category->save();
+        
         $request->session()->flash('status', 'Category has been Added successfully');
         return redirect('/admin/category');
     }
@@ -91,6 +107,9 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'description'=>'required',
+            'number_of_jobs'=>'required|numeric',
+            'is_active'=>'required|numeric',
         ]);
 
         if ($validator->fails()) {
@@ -98,9 +117,21 @@ class CategoryController extends Controller
                 ->withInput($request->all())
                 ->withErrors($validator);
         }
+
         $category = Category::findOrFail($id);
+
+        if($request->hasFile('icon')){
+            $fileName = Str::random(10).'_'.$request->icon->getClientOriginalName();
+            $request->icon->move('admin/images/categories/',$fileName);
+            $category->icon = $fileName;
+        }
+
         $category->name = $request->name;
+        $category->description = $request->description;
+        $category->number_of_jobs = $request->number_of_jobs;
+        $category->is_active = $request->is_active;
         $category->save();
+    
         $request->session()->flash('status', 'Category has been Updated successfully');
         return redirect('/admin/category');
     }

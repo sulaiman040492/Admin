@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-class ClientController extends Controller
+use App\Http\Controllers\Controller;
+
+
+class AdminController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -11,20 +14,20 @@ class ClientController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:client');
+        $this->middleware('auth:admin');
     }
     public function index()
     {
         // dd(123);
-        return view('client.dashboard');
+        return view('admin.dashboard');
     }
 
     public function getReceiver()
     {
-        return view('client.receiver');
+        return view('admin.receiver');
     }
     public function getProvider()
     {
-        return view('client.provider');
+        return view('admin.provider');
     }
 }

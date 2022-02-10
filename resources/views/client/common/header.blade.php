@@ -309,7 +309,7 @@
 												<div class="separator my-2"></div>
 
 												<div class="menu-item px-5">
-													<a href="#" class="menu-link px-5">My Profile</a>
+													<a href="{{route('client.profile')}}" class="menu-link px-5">My Profile</a>
 												</div>
 
 												<div class="separator my-2"></div>
@@ -321,7 +321,7 @@
 												<div class="separator my-2"></div>
 
 												<div class="menu-item px-5">
-													<a href="sign-in.php" class="menu-link px-5">Sign Out</a>
+													<a href="{{route('client.logout')}}" class="menu-link px-5">Sign Out</a>
 												</div>
 											</div>
 										</div>
