@@ -40,11 +40,11 @@
 				<div class="d-flex flex-column flex-lg-row-fluid py-10">
 					<div class="d-flex flex-center flex-column flex-column-fluid">
 						<div class="w-lg-500px p-10 p-lg-15 mx-auto">
-<<<<<<< HEAD
-                            <form method="POST" action="{{ route('client.login') }}">
-=======
+
+                            <!-- <form method="POST" action="{{ route('client.login') }}"> -->
+
                             <form method="POST" action="{{ route('client.login') }}" class="form w-100" novalidate="novalidate" id="kt_sign_in_form">
->>>>>>> 5653ac0cb10f9c05be839256a998bd07e9fab72d
+
                                 {{-- <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" action="{{ route('admin.login') }}"> --}}
                                     @csrf
 								<div class="text-center mb-10">
@@ -88,7 +88,7 @@
                                     </div>
                                 @endif
 								<div class="text-center">
-									<button type="button" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
+									<button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
 										<span class="indicator-label">Continue</span>
 										<span class="indicator-progress">Please wait...
 										<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
