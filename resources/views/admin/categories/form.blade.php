@@ -36,7 +36,7 @@
 
 												<div class="col-xl-9 fv-row">
                           @if(isset($category) && $category->icon != null)
-                            <img src="{{asset('images/categories/'.$category->icon)}}" width="100" height="100" />
+                            <img src="{{asset('images/categories/'.$category->icon)}}" width="100" height="100" alt="image not found"/>
                             <input type="hidden" name="old_icon" value="{{$category->icon}}">
                           @endif
 													<input type="file" class="form-control form-control-solid" name="icon" value="{{old('icon',isset($category)?$category->icon:'')}}" @if(!isset($category)) required @endif/>
@@ -60,6 +60,6 @@
 
 </div>
 <div class="card-footer d-flex justify-content-end py-6 px-9">
-  <button type="reset" class="btn btn-light btn-active-light-primary me-2">Discard</button>
+  <a href="{{route('admin.category.index')}}" class="btn btn-light btn-active-light-primary me-2">Back</a>
   <button type="submit" class="btn btn-primary" id="kt_project_settings_submit">{{isset($submitButtonText) ? $submitButtonText : 'Add'}}</button>
 </div>

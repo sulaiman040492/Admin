@@ -10,6 +10,6 @@
   </div>
 </div>
 <div class="card-footer d-flex justify-content-end py-6 px-9">
-  <a href="{{route('admin.responsibility.index')}}"><button type="button" class="btn btn-light btn-active-light-primary me-2">Back</button></a>
+  <a href="{{route('admin.requirement.index')}}"><button type="button" class="btn btn-light btn-active-light-primary me-2">Back</button></a>
   <button type="submit" class="btn btn-primary" id="kt_project_settings_submit">{{isset($submitButtonText) ? $submitButtonText : 'Add'}}</button>
 </div>

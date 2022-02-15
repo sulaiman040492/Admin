@@ -7,7 +7,7 @@
 									<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">
 										Dashboard
 										<span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
-										<small class="text-muted fs-7 fw-bold my-1 ms-1">Profile Edit</small>
+										<small class="text-muted fs-7 fw-bold my-1 ms-1">Edit Requirement</small>
 									</h1>
 								</div>					
 							</div>
@@ -18,8 +18,8 @@
 
 								<div class="card">
 									<div class="card-header">
-										<div class="card-title fs-3 fw-bolder">ID <span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
-										<small class="text-muted fs-7 fw-bold my-1 ms-1">XD-1</small></div>
+										<div class="card-title fs-3 fw-bolder">Edit <span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
+										<small class="text-muted fs-7 fw-bold my-1 ms-1">Requirement</small></div>
 									</div>
 
                                     {{ Form::model($res, ['method'=>'PATCH', 'route' => ['admin.requirement.update', [$res->id]]]) }}

@@ -40,14 +40,17 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
         'admin' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'client' => [
+        'receiver' => [
             'driver' => 'session',
-            'provider' => 'clients',
+            'provider' => 'receivers',
+        ],
+        'provider' => [
+            'driver' => 'session',
+            'provider' => 'providers',
         ],
     ],
 
@@ -78,9 +81,13 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'clients' => [
+        'receivers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\ClientModel::class,
+            'model' => App\Models\ReceiverModel::class,
+        ],
+        'providers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ProviderModel::class,
         ],
 
         // 'users' => [
@@ -118,8 +125,14 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'clients' => [
-            'provider' => 'clients',
+        'receivers' => [
+            'provider' => 'receivers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'providers' => [
+            'provider' => 'providers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

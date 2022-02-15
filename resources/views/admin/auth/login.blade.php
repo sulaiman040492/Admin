@@ -45,8 +45,6 @@
                                     @csrf
 								<div class="text-center mb-10">
 									<h1 class="text-dark mb-3">Sign In to Island Care</h1>
-									<div class="text-gray-400 fw-bold fs-4">New Here?
-									<a href="sign-up.php" class="link-primary fw-bolder">Create an Account</a></div>
 								</div>
 
                                 
@@ -67,7 +65,7 @@
 									<div class="d-flex flex-stack mb-2">
 										<label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
 
-										<a href="password-reset.php" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
+									
 									</div>
 
 									<input class="form-control form-control-lg form-control-solid @error('password') border-danger is-invalid @enderror" type="password" value="{{ old('password') }}" name="password" autocomplete="off" />
